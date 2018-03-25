@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let coreDataExpirtTime=10
+    static let resume:Resume=Resume()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -56,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error as NSError? {
        
                 //fatalError("Unresolved error \(error), \(error.userInfo)")
-                print("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
