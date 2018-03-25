@@ -12,5 +12,6 @@ enum ErrorMessage: String {
     
     case noInternet="The Internet connection appears to be offline. Please check your conectivity and try again."
     case unknownError="Whoops, something went wrong!"
+    case failToOpenFile="The operation couldn’t be completed. The file does not exist."
     
 }
