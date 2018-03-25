@@ -18,6 +18,12 @@
 		F979259E20676B28008CEDB9 /* CareerViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979259D20676B28008CEDB9 /* CareerViewerTests.swift */; };
 		F97925AF20677569008CEDB9 /* Overview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925AD20677569008CEDB9 /* Overview+CoreDataClass.swift */; };
 		F97925B020677569008CEDB9 /* Overview+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925AE20677569008CEDB9 /* Overview+CoreDataProperties.swift */; };
+		F97925B320677695008CEDB9 /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925B220677695008CEDB9 /* Resume.swift */; };
+		F97925B520677771008CEDB9 /* WorkExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925B420677771008CEDB9 /* WorkExperience.swift */; };
+		F97925B72067777D008CEDB9 /* Education.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925B62067777D008CEDB9 /* Education.swift */; };
+		F97925B920677798008CEDB9 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925B820677798008CEDB9 /* Skill.swift */; };
+		F97925BB206777AB008CEDB9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925BA206777AB008CEDB9 /* Contact.swift */; };
+		F97925BE20677836008CEDB9 /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925BD20677836008CEDB9 /* ContactType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		F979259F20676B28008CEDB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97925AD20677569008CEDB9 /* Overview+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Overview+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F97925AE20677569008CEDB9 /* Overview+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Overview+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F97925B220677695008CEDB9 /* Resume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
+		F97925B420677771008CEDB9 /* WorkExperience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkExperience.swift; sourceTree = "<group>"; };
+		F97925B62067777D008CEDB9 /* Education.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Education.swift; sourceTree = "<group>"; };
+		F97925B820677798008CEDB9 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		F97925BA206777AB008CEDB9 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		F97925BD20677836008CEDB9 /* ContactType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,7 @@
 		F979258420676B28008CEDB9 /* CareerViewer */ = {
 			isa = PBXGroup;
 			children = (
+				F97925BC206777FD008CEDB9 /* Enum */,
 				F97925AA20676BD4008CEDB9 /* Controller */,
 				F97925A920676BCC008CEDB9 /* View */,
 				F97925A820676BC4008CEDB9 /* Model */,
@@ -164,6 +177,11 @@
 			isa = PBXGroup;
 			children = (
 				F97925AC206774C0008CEDB9 /* Overview */,
+				F97925B220677695008CEDB9 /* Resume.swift */,
+				F97925B62067777D008CEDB9 /* Education.swift */,
+				F97925B420677771008CEDB9 /* WorkExperience.swift */,
+				F97925B820677798008CEDB9 /* Skill.swift */,
+				F97925BA206777AB008CEDB9 /* Contact.swift */,
 			);
 			name = LogicClasses;
 			sourceTree = "<group>";
@@ -175,6 +193,14 @@
 				F97925AE20677569008CEDB9 /* Overview+CoreDataProperties.swift */,
 			);
 			name = Overview;
+			sourceTree = "<group>";
+		};
+		F97925BC206777FD008CEDB9 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				F97925BD20677836008CEDB9 /* ContactType.swift */,
+			);
+			name = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,11 +420,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97925B320677695008CEDB9 /* Resume.swift in Sources */,
 				F979258820676B28008CEDB9 /* ViewController.swift in Sources */,
+				F97925BB206777AB008CEDB9 /* Contact.swift in Sources */,
 				F979258620676B28008CEDB9 /* AppDelegate.swift in Sources */,
+				F97925B920677798008CEDB9 /* Skill.swift in Sources */,
 				F97925B020677569008CEDB9 /* Overview+CoreDataProperties.swift in Sources */,
 				F97925AF20677569008CEDB9 /* Overview+CoreDataClass.swift in Sources */,
+				F97925BE20677836008CEDB9 /* ContactType.swift in Sources */,
 				F979258E20676B28008CEDB9 /* CareerViewer.xcdatamodeld in Sources */,
+				F97925B72067777D008CEDB9 /* Education.swift in Sources */,
+				F97925B520677771008CEDB9 /* WorkExperience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
