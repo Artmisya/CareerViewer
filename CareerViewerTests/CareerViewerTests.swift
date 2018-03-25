@@ -241,5 +241,25 @@ class CareerViewerTests: XCTestCase {
         
     }
     
+    func testReadJsonFromFile(){
+        
+        // test with a correct file
+        let result=JsonHandler.readJsonFile(fileName: "education")
+        XCTAssertNil(result.error, result.error!.localizedDescription)
+        XCTAssertNotNil(result.data, "Whoops, readJsonFile returns a nil value for data")
+        
+        // test with a file that does not exist
+        let resultFileNotExsit=JsonHandler.readJsonFile(fileName: "thisfiledoesnotexsit")
+        XCTAssertNotNil(resultFileNotExsit.error, "Whoops, readJsonFile does NOT return any error while reading a file that does not exsit!")
+        XCTAssertNil(resultFileNotExsit.data, "Whoops, readJsonFile returns a NOT null data for a file that does not exsit!")
+        
+        //test with a file  witch have a wrong json format
+        
+        let resultWrongFormat=JsonHandler.readJsonFile(fileName: "wrongFormatFile")
+        XCTAssertNotNil(resultWrongFormat.error, "Whoops,  readJsonFile does NOT return any error while reading a file with a wrong json format!")
+        XCTAssertNil(resultWrongFormat.data, "Whoops,  readJsonFile returns a NOT null data for a file with a wrong json format!")
+        
+    }
+    
     
 }
