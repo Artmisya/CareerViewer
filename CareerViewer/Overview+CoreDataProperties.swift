@@ -16,9 +16,9 @@ extension Overview {
         return NSFetchRequest<Overview>(entityName: "Overview");
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var descryption: String?
+    @NSManaged public var expiryTime: NSDate?
     @NSManaged public var image: NSObject?
-    @NSManaged public var expirtTime: NSDate?
+    @NSManaged public var name: String?
 
 }
