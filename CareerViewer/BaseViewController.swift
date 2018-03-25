@@ -70,7 +70,14 @@ class BaseViewController: UIViewController {
         printController.printingItem = self.view.toImage()
         
         // send it to printer
-        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+        if(UIDevice.current.userInterfaceIdiom==UIUserInterfaceIdiom.pad){
+            
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            
+        }
+        else{
+            printController.present(animated: true, completionHandler: nil)
+        }
     }
     
 }
