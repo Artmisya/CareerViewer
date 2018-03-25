@@ -38,6 +38,10 @@ class BaseViewController: UIViewController {
                 reason = ErrorMessage.unknownError.rawValue
                 
             }
+            else if (reason=="The Internet connection appears to be offline."){
+                
+                 reason = ErrorMessage.noInternet.rawValue
+            }
             let alert = UIAlertController(title: "Career Viewer", message: reason, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
