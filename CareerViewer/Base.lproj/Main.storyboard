@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eSC-Sk-JcY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" misplaced="YES" id="DsP-9a-wrv">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1oA-xI-02H">
@@ -29,11 +29,11 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FVq-zS-DxH">
-                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Wfh-xd-y7c">
-                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <rect key="frame" x="169" y="258.5" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
@@ -50,7 +50,7 @@
                             <constraint firstItem="Wfh-xd-y7c" firstAttribute="centerY" secondItem="DsP-9a-wrv" secondAttribute="centerY" id="xgh-c0-XM5"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="6Mk-dG-J6S"/>
                     <connections>
                         <outlet property="loadingView" destination="Wfh-xd-y7c" id="rrI-DE-LLm"/>
@@ -104,20 +104,43 @@
             </objects>
             <point key="canvasLocation" x="4588" y="949.47526236881572"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact View Controller-->
         <scene sceneID="qdR-Br-SRI">
             <objects>
-                <viewController id="FJw-f1-Co7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactVC" id="FJw-f1-Co7" customClass="ContactViewController" customModule="CareerViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5hx-iw-Zi6"/>
                         <viewControllerLayoutGuide type="bottom" id="gig-E4-cpJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ddG-bb-Yke">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-RP-UQ4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Hra-eq-2N4">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HI5-RP-UQ4" firstAttribute="top" secondItem="5hx-iw-Zi6" secondAttribute="bottom" id="DON-c9-bCd"/>
+                            <constraint firstAttribute="trailing" secondItem="HI5-RP-UQ4" secondAttribute="trailing" id="Xdp-3K-6Df"/>
+                            <constraint firstItem="HI5-RP-UQ4" firstAttribute="leading" secondItem="ddG-bb-Yke" secondAttribute="leading" id="YDt-70-mUn"/>
+                            <constraint firstItem="Hra-eq-2N4" firstAttribute="centerY" secondItem="ddG-bb-Yke" secondAttribute="centerY" id="j7P-Pv-Dwn"/>
+                            <constraint firstItem="Hra-eq-2N4" firstAttribute="centerX" secondItem="ddG-bb-Yke" secondAttribute="centerX" id="kPx-lk-DkV"/>
+                            <constraint firstItem="gig-E4-cpJ" firstAttribute="top" secondItem="HI5-RP-UQ4" secondAttribute="bottom" id="qae-7b-SOq"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="PXH-tB-Ce4"/>
+                    <connections>
+                        <outlet property="contactTableView" destination="HI5-RP-UQ4" id="pOL-TD-pql"/>
+                        <outlet property="loadingView" destination="Hra-eq-2N4" id="G4K-GM-Rqw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HND-rn-Kf4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
