@@ -142,7 +142,7 @@ class OverviewViewController: BaseViewController {
     
     func closeWarningTapped(recognizer:UITapGestureRecognizer){
         
-        UIView.transition(with: warningView, duration: 0.7, options: .transitionCurlUp, animations: {
+        UIView.transition(with: warningView, duration: 0.5, options: .transitionCurlUp, animations: {
             self.warningView.isHidden = true
         })
         
