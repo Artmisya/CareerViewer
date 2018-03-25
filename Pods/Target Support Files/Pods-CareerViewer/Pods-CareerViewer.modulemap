@@ -1,0 +1,6 @@
+framework module Pods_CareerViewer {
+  umbrella header "Pods-CareerViewer-umbrella.h"
+
+  export *
+  module * { export * }
+}
