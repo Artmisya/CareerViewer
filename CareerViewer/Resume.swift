@@ -186,6 +186,44 @@ class Resume{
         
     }
     
-
+    
+    //this method fetch work skills from json file and initialize the skill list
+    
+    func  fetchSkills()-> Observable<Void> {return Observable.create
+        { observer -> Disposable in
+            
+            
+            let result = JsonHandler.readJsonFile(fileName: "skill")
+            if let jsonData=result.data{
+                
+                self.skillList=[Skill]()
+                let skillDic=jsonData["data"] as! NSArray
+                
+                for type in (skillDic as? [[String:Any]])!{
+                    
+                    
+                    let title=type["title"]! as! String
+                    let rate=type["rate"]! as! String
+                    
+                    let skill=Skill(title:title,rate:rate)
+                    
+                    self.skillList?.append(skill)
+                    
+                }
+                
+                observer.onNext()
+                observer.onCompleted()
+                
+            }
+            else{
+                
+                observer.onError(result.error!)
+            }
+            return Disposables.create()
+        }
         
+        
+    }
+
+    
 }
