@@ -89,20 +89,43 @@
             </objects>
             <point key="canvasLocation" x="210" y="210"/>
         </scene>
-        <!--View Controller-->
+        <!--Education View Controller-->
         <scene sceneID="T05-jt-EYe">
             <objects>
-                <viewController id="b3V-CW-qh5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EducationVC" id="b3V-CW-qh5" customClass="EducationViewController" customModule="CareerViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MRb-Ks-la5"/>
                         <viewControllerLayoutGuide type="bottom" id="lXe-xh-c5w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LNC-3S-ASu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-oh-eLm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="P2y-Yn-SnK">
+                                <rect key="frame" x="169" y="258.5" width="37" height="37"/>
+                                <color key="color" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lXe-xh-c5w" firstAttribute="top" secondItem="vRA-oh-eLm" secondAttribute="bottom" id="1bg-hQ-zhf"/>
+                            <constraint firstItem="P2y-Yn-SnK" firstAttribute="centerX" secondItem="LNC-3S-ASu" secondAttribute="centerX" id="GO0-Sc-lGw"/>
+                            <constraint firstItem="vRA-oh-eLm" firstAttribute="top" secondItem="MRb-Ks-la5" secondAttribute="bottom" id="JMt-bv-QvO"/>
+                            <constraint firstItem="P2y-Yn-SnK" firstAttribute="centerY" secondItem="LNC-3S-ASu" secondAttribute="centerY" id="Sx0-hk-Bt9"/>
+                            <constraint firstAttribute="trailing" secondItem="vRA-oh-eLm" secondAttribute="trailing" id="bfq-pg-vep"/>
+                            <constraint firstItem="vRA-oh-eLm" firstAttribute="leading" secondItem="LNC-3S-ASu" secondAttribute="leading" id="fGe-h3-jC5"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="hZ4-OE-EQ5"/>
+                    <connections>
+                        <outlet property="educationTableView" destination="vRA-oh-eLm" id="2Ir-F5-gfD"/>
+                        <outlet property="loadingView" destination="P2y-Yn-SnK" id="bfR-CY-CnN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpu-1w-3dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
