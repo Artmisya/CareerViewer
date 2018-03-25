@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="top" id="2Nr-hZ-mzF"/>
                         <viewControllerLayoutGuide type="bottom" id="eSC-Sk-JcY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="DsP-9a-wrv">
+                    <view key="view" contentMode="scaleToFill" id="DsP-9a-wrv">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -29,11 +29,11 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FVq-zS-DxH">
-                                <rect key="frame" x="0.0" y="44" width="375" height="461"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Wfh-xd-y7c">
-                                <rect key="frame" x="169" y="258.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
@@ -177,16 +177,16 @@
                         <viewControllerLayoutGuide type="top" id="MRb-Ks-la5"/>
                         <viewControllerLayoutGuide type="bottom" id="lXe-xh-c5w"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="LNC-3S-ASu">
+                    <view key="view" contentMode="scaleToFill" id="LNC-3S-ASu">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-oh-eLm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="P2y-Yn-SnK">
-                                <rect key="frame" x="169" y="258.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
                                 <color key="color" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
