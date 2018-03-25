@@ -9,39 +9,96 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Skill View Controller-->
         <scene sceneID="2Ue-jm-pdr">
             <objects>
-                <viewController id="gdZ-TN-Ouk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SkillVC" id="gdZ-TN-Ouk" customClass="SkillViewController" customModule="CareerViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Nr-hZ-mzF"/>
                         <viewControllerLayoutGuide type="bottom" id="eSC-Sk-JcY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DsP-9a-wrv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="DsP-9a-wrv">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1oA-xI-02H">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="22j-Es-I3K"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FVq-zS-DxH">
+                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Wfh-xd-y7c">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FVq-zS-DxH" firstAttribute="leading" secondItem="DsP-9a-wrv" secondAttribute="leading" id="6IV-3g-caR"/>
+                            <constraint firstItem="1oA-xI-02H" firstAttribute="leading" secondItem="DsP-9a-wrv" secondAttribute="leading" id="Atp-XP-AFI"/>
+                            <constraint firstItem="FVq-zS-DxH" firstAttribute="top" secondItem="1oA-xI-02H" secondAttribute="bottom" id="IQ3-l1-rka"/>
+                            <constraint firstAttribute="trailing" secondItem="1oA-xI-02H" secondAttribute="trailing" id="ZxM-hE-Hq9"/>
+                            <constraint firstItem="Wfh-xd-y7c" firstAttribute="centerX" secondItem="DsP-9a-wrv" secondAttribute="centerX" id="a76-Qo-Rrf"/>
+                            <constraint firstItem="1oA-xI-02H" firstAttribute="top" secondItem="2Nr-hZ-mzF" secondAttribute="bottom" id="gM7-LW-3MO"/>
+                            <constraint firstAttribute="trailing" secondItem="FVq-zS-DxH" secondAttribute="trailing" id="i8c-Sh-sIl"/>
+                            <constraint firstItem="eSC-Sk-JcY" firstAttribute="top" secondItem="FVq-zS-DxH" secondAttribute="bottom" id="lmR-3V-3CA"/>
+                            <constraint firstItem="Wfh-xd-y7c" firstAttribute="centerY" secondItem="DsP-9a-wrv" secondAttribute="centerY" id="xgh-c0-XM5"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="6Mk-dG-J6S"/>
+                    <connections>
+                        <outlet property="loadingView" destination="Wfh-xd-y7c" id="rrI-DE-LLm"/>
+                        <outlet property="searchBar" destination="1oA-xI-02H" id="sVg-DM-muM"/>
+                        <outlet property="skillTableView" destination="FVq-zS-DxH" id="v9U-Hf-51Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2W-aZ-g7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2930" y="976"/>
         </scene>
-        <!--View Controller-->
+        <!--Work Experience View Controller-->
         <scene sceneID="jMg-fx-4w8">
             <objects>
-                <viewController id="cuP-ZJ-h2R" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkExperienceVC" id="cuP-ZJ-h2R" customClass="WorkExperienceViewController" customModule="CareerViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r7y-hq-z7Y"/>
                         <viewControllerLayoutGuide type="bottom" id="D1h-Sz-0W9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ccO-pW-Mc3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QqN-sJ-gBZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3eX-eR-z5g">
+                                <rect key="frame" x="169" y="269" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3eX-eR-z5g" firstAttribute="centerX" secondItem="ccO-pW-Mc3" secondAttribute="centerX" id="bQp-U6-x8n"/>
+                            <constraint firstItem="3eX-eR-z5g" firstAttribute="centerY" secondItem="ccO-pW-Mc3" secondAttribute="centerY" id="brr-qU-QPu"/>
+                            <constraint firstItem="QqN-sJ-gBZ" firstAttribute="leading" secondItem="ccO-pW-Mc3" secondAttribute="leading" id="dEe-oS-uyu"/>
+                            <constraint firstItem="D1h-Sz-0W9" firstAttribute="top" secondItem="QqN-sJ-gBZ" secondAttribute="bottom" id="fXm-g4-J6U"/>
+                            <constraint firstAttribute="trailing" secondItem="QqN-sJ-gBZ" secondAttribute="trailing" id="gxs-hG-izX"/>
+                            <constraint firstItem="QqN-sJ-gBZ" firstAttribute="top" secondItem="r7y-hq-z7Y" secondAttribute="bottom" id="kzM-wZ-7Mh"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="VsH-Pi-f1c"/>
+                    <connections>
+                        <outlet property="loadingView" destination="3eX-eR-z5g" id="Dbc-Ny-wyN"/>
+                        <outlet property="workExperienceTableView" destination="QqN-sJ-gBZ" id="Jnb-eu-wvq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDU-9q-o6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,12 +154,12 @@
                         <viewControllerLayoutGuide type="top" id="MRb-Ks-la5"/>
                         <viewControllerLayoutGuide type="bottom" id="lXe-xh-c5w"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LNC-3S-ASu">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="LNC-3S-ASu">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-oh-eLm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="P2y-Yn-SnK">
@@ -120,7 +177,7 @@
                             <constraint firstItem="vRA-oh-eLm" firstAttribute="leading" secondItem="LNC-3S-ASu" secondAttribute="leading" id="fGe-h3-jC5"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="hZ4-OE-EQ5"/>
                     <connections>
                         <outlet property="educationTableView" destination="vRA-oh-eLm" id="2Ir-F5-gfD"/>
