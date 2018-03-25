@@ -129,7 +129,7 @@ class CareerViewerTests: XCTestCase {
     
     /**Note to test:this is for testing when coredata is EMPTY and  online fetch also get fail.
      TURN OFF your internet connection to do this test***/
-    func testFetchOverviewOfflineNotExist(){
+    func testFetchOfflineOverviewNotExist(){
         
         // first delete core data make it empty
         
@@ -169,7 +169,7 @@ class CareerViewerTests: XCTestCase {
     
     /***Note to test:this is for testing offline mode, TURN OFF your internet connection to do this test,
      and make sure to call this test LESS than 10 mins AFTER calling testFetchOverviewOnline()*/
-    func testFetchOverviewOfflineNotExpired(){
+    func testFetchOfflineOverviewNotExpired(){
         
         let disposeBag = DisposeBag()
         
@@ -206,7 +206,7 @@ class CareerViewerTests: XCTestCase {
     
     /*******Note to test:this is for testing offline mode, TURN OFF your internet connection to do this test,
      make sure to call this test MORE than 10 mins AFTER calling testFetchOverviewOnline()*/
-    func testFetchOverviewOfflineExpired(){
+    func testFetchOfflineOverviewExpired(){
         
         let disposeBag = DisposeBag()
         
