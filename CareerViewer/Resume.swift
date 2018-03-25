@@ -105,6 +105,45 @@ class Resume{
         }
     }
     
+    //this method fetch education from json file and initialize the education list
     
+    func  fetchEducation()-> Observable<Void> {return Observable.create
+        { observer -> Disposable in
+            
+            
+            let result = JsonHandler.readJsonFile(fileName: "education")
+            if let jsonData=result.data{
+                
+                self.educationList=[Education]()
+                let educationDic=jsonData["data"] as! NSArray
+                
+                for type in (educationDic as? [[String:Any]])!{
+                    
+                    
+                    let degree=type["degree"]! as! String
+                    let avg=type["avg"]! as! String
+                    let university=type["university"]! as! String
+                    let duration=type["duration"]! as! String
+                    
+                    let education=Education(degree: degree, avg: avg, university: university, duration: duration)
+                    
+                    
+                    self.educationList?.append(education)
+                    
+                }
+                
+                observer.onNext()
+                observer.onCompleted()
+                
+            }
+            else{
+                
+                observer.onError(result.error!)
+            }
+            return Disposables.create()
+        }
+        
+        
+    }
         
 }
