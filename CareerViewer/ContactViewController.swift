@@ -62,7 +62,6 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
                 
                 self.loadingView.stopAnimating()
                 self.refreshControl.endRefreshing()
-                print("*****")
                 
         }, onDisposed: nil)
             .addDisposableTo(disposeBag)
@@ -84,6 +83,18 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
         
         refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), for: .valueChanged)
         contactTableView.addSubview(refreshControl)
+        
+        // setting print button
+        
+        let btnName_print = UIButton()
+        btnName_print .setImage(UIImage(named: "print"), for: .normal)
+        btnName_print .frame = CGRectMake(0, 0, 30, 30)
+        btnName_print .addTarget(self, action: #selector(self.printClicked(sender:)), for: .touchUpInside)
+        
+        //.... Set Left Bar Button item
+        let rightBarButton_print  = UIBarButtonItem()
+        rightBarButton_print .customView = btnName_print
+        self.navigationItem.rightBarButtonItem=rightBarButton_print
         
     }
     
