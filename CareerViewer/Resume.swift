@@ -145,5 +145,47 @@ class Resume{
         
         
     }
+    
+    //this method fetch work experience from json file and initialize the work experience list
+    
+    func  fetchWorkExperience()-> Observable<Void> {return Observable.create
+        { observer -> Disposable in
+            
+            
+            let result = JsonHandler.readJsonFile(fileName: "workExperience")
+            if let jsonData=result.data{
+                
+                self.workExperienceList=[WorkExperience]()
+                let workExperienceDic=jsonData["data"] as! NSArray
+                
+                for type in (workExperienceDic as? [[String:Any]])!{
+                    
+                    print (type)
+                    let role=type["role"]! as! String
+                    let company=type["company"]! as! String
+                    let duration=type["duration"]! as! String
+                    let descryption=type["descryption"]! as! String
+                    
+                    let workExperience=WorkExperience(role: role,company: company, duration: duration,descryption:descryption)
+                    
+                    self.workExperienceList?.append(workExperience)
+                    
+                }
+                
+                observer.onNext()
+                observer.onCompleted()
+                
+            }
+            else{
+                
+                observer.onError(result.error!)
+            }
+            return Disposables.create()
+        }
+        
+        
+    }
+    
+
         
 }
