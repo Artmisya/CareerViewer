@@ -225,5 +225,42 @@ class Resume{
         
     }
 
+    //this method fetch contacts from json file and initialize the contact list
+    
+    func  fetchContacts()-> Observable<Void> {return Observable.create
+        { observer -> Disposable in
+            
+            let result = JsonHandler.readJsonFile(fileName: "contact")
+            if let jsonData=result.data{
+                
+                self.contactList=[Contact]()
+                let contactDic=jsonData["data"] as! NSArray
+                
+                for dic in (contactDic as? [[String:Any]])!{
+                    
+                    let stringType=dic["type"] as? String
+                    
+                    if let type = ContactType(rawValue: stringType!){
+                        
+                        let value=dic["value"]! as! String
+                        let contact=Contact(type: type, value: value)
+                        
+                        self.contactList?.append(contact)
+                    }
+                    
+                }
+                
+                observer.onNext()
+                observer.onCompleted()
+            }
+            else{
+                
+                observer.onError(result.error!)
+            }
+            return Disposables.create()
+        }
+        
+        
+    }
     
 }
