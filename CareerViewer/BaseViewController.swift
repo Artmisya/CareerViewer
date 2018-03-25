@@ -46,5 +46,27 @@ class BaseViewController: UIViewController {
         
     }
     
+    // helps to create a frame
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func printClicked(sender: UIButton) {
+        
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "Creerer Viewer"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        // Assign a UIImage version of my UIView as a printing iten
+        
+        printController.printingItem = self.view.toImage()
+        
+        // send it to printer
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+    }
     
 }
