@@ -8,6 +8,7 @@
 
 import UIKit
 
+/* this extension will be use in print methode, it helps to convert a view to image*/
 extension UIView {
     func toImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
