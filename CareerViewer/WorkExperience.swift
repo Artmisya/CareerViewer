@@ -13,11 +13,15 @@ class WorkExperience{
     let role:String
     let company:String
     let duration:String
+    let descryption:String
+
     
-    init(role:String,company:String,duration:String) {
+    init(role:String,company:String,duration:String,descryption:String) {
         self.role=role
         self.company=company
         self.duration=duration
+        self.descryption=descryption
     }
+    
     
 }
