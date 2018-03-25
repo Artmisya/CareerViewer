@@ -57,6 +57,8 @@ class CareerViewerTests: XCTestCase {
         XCTAssertTrue((overviewObj?.expiryTime as! Date) > Date())
         XCTAssertTrue((overviewObj?.expiryTime as! Date) < fromNow11Mins!)
         
+   
+        
     }
     
     func testFetchOverviewFromCoreData(){
@@ -75,12 +77,10 @@ class CareerViewerTests: XCTestCase {
         XCTAssertEqual(offlineOverview?.descryption, "testing fetching core data")
         XCTAssertNotNil(offlineOverview?.image, "fetchOverviewFromCoreData cannot fetch the image")
         XCTAssertNotNil(offlineOverview?.expiryTime, "fetchOverviewFromCoreData cannot fetch the expiry time")
-        
-        
-        
+
     }
     
-    /******Note to test: this is for testin  when coredata is EMPTY and  online mode get success
+    /******Note to test: this test is for when coredata is EMPTY and  online mode get success
      TURN ON your internet connection to do this test*****/
     func testFetchOverviewOnline(){
 
@@ -127,7 +127,7 @@ class CareerViewerTests: XCTestCase {
     }
     
     
-    /**Note to test:this is for testing when coredata is EMPTY and  online fetch also get fail.
+    /**Note to test:this test is for when coredata is EMPTY and  online fetch also get fail.
      TURN OFF your internet connection to do this test***/
     func testFetchOfflineOverviewNotExist(){
         
@@ -167,7 +167,7 @@ class CareerViewerTests: XCTestCase {
         
     }
     
-    /***Note to test:this is for testing offline mode, TURN OFF your internet connection to do this test,
+    /***Note to test:this test is for offline mode, TURN OFF your internet connection to do this test,
      and make sure to call this test LESS than 10 mins AFTER calling testFetchOverviewOnline()*/
     func testFetchOfflineOverviewNotExpired(){
         
