@@ -56,21 +56,50 @@ class Resume{
                         
                     case .success(let info):
                         
-                        // online load was successfull
+                        
                         let data=info as? [String: Any]
-                        let overviewData=data?["data"] as? [String: String]
                         
-                        let descryption=(overviewData?["descryption"])! as String
-                        let imageUrl=(overviewData?["profile_image"])! as String
-                        let name=(overviewData?["name"])! as String
+                        // online load was successfull
+                        if let overviewData=data?["data"] as? [String: String]{
                         
-                        // update core data with latest data from api
-                        self.overview=CoreDataHandler.createOverview(name:name,descryption:descryption,imageProfile:imageUrl ) as! Overview?
+                            let descryption=self.checkForNullKey(param:overviewData["descryption"] as Any)
+                            let imageUrl=self.checkForNullKey(param:overviewData["profile_image"] as Any)
+                            let name=self.checkForNullKey(param:overviewData["name"] as Any)
+
+                            // update core data with latest data from api
+                            self.overview=CoreDataHandler.createOverview(name:name,descryption:descryption,imageProfile:imageUrl ) as! Overview?
+                            
+                            //return result to viewcontroller
+                            let isOutDated=false
+                            observer.onNext(isOutDated)
+                            observer.onCompleted()
                         
-                        //return result to viewcontroller
-                        let isOutDated=false
-                        observer.onNext(isOutDated)
-                        observer.onCompleted()
+                        }
+                        else{
+                            
+                            // api does not return a response in a proper format
+                            
+                            // try to load an expired overview if there is any
+                            if offlineOverview.isEmpty()==false{
+                                
+                                // there is an expired overview load it with a warning ( return isOutDated true)
+                                self.overview=offlineOverview.data
+                                
+                                //return result to viewcontroller
+                                let isOutDated=true
+                                observer.onNext(isOutDated)
+                                observer.onCompleted()
+                                
+                            }
+                            else{
+                                
+                                // unable to load offline core data is empty , inform user
+                                let userError=ErrorType.generalError(message: ErrorMessage.apiFail.rawValue)
+                                observer.onError(userError)
+
+                            }
+                            
+                        }
                         
                         
                     case .failure(let error):
@@ -119,12 +148,11 @@ class Resume{
                 
                 for type in (educationDic as? [[String:Any]])!{
                     
-                    
-                    let degree=type["degree"]! as! String
-                    let avg=type["avg"]! as! String
-                    let university=type["university"]! as! String
-                    let duration=type["duration"]! as! String
-                    
+                    let degree=self.checkForNullKey(param:type["degree"] as Any)
+                    let avg=self.checkForNullKey(param:type["avg"] as Any)
+                    let university=self.checkForNullKey(param:type["university"] as Any)
+                    let duration=self.checkForNullKey(param:type["duration"] as Any)
+
                     let education=Education(degree: degree, avg: avg, university: university, duration: duration)
                     
                     
@@ -161,11 +189,12 @@ class Resume{
                 for type in (workExperienceDic as? [[String:Any]])!{
                     
                     print (type)
-                    let role=type["role"]! as! String
-                    let company=type["company"]! as! String
-                    let duration=type["duration"]! as! String
-                    let descryption=type["descryption"]! as! String
                     
+                    let role=self.checkForNullKey(param:type["role"] as Any)
+                    let company=self.checkForNullKey(param:type["company"] as Any)
+                    let duration=self.checkForNullKey(param:type["duration"] as Any)
+                    let descryption=self.checkForNullKey(param:type["descryption"] as Any)
+
                     let workExperience=WorkExperience(role: role,company: company, duration: duration,descryption:descryption)
                     
                     self.workExperienceList?.append(workExperience)
@@ -202,8 +231,8 @@ class Resume{
                 for type in (skillDic as? [[String:Any]])!{
                     
                     
-                    let title=type["title"]! as! String
-                    let rate=type["rate"]! as! String
+                    let title=self.checkForNullKey(param:type["title"] as Any)
+                    let rate=self.checkForNullKey(param:type["rate"] as Any)
                     
                     let skill=Skill(title:title,rate:rate)
                     
@@ -238,11 +267,13 @@ class Resume{
                 
                 for dic in (contactDic as? [[String:Any]])!{
                     
-                    let stringType=dic["type"] as? String
                     
-                    if let type = ContactType(rawValue: stringType!){
+                    let stringType=self.checkForNullKey(param:dic["type"] as Any)
+
+                    
+                    if let type = ContactType(rawValue: stringType){
                         
-                        let value=dic["value"]! as! String
+                        let value=self.checkForNullKey(param:dic["value"] as Any)
                         let contact=Contact(type: type, value: value)
                         
                         self.contactList?.append(contact)
@@ -263,4 +294,13 @@ class Resume{
         
     }
     
+    /*This method check for null keys,in case a dictionry does not contain a certain key this method returns an emty string for value of that key, if the key exsit then it returns the actual value of that key */
+    private func checkForNullKey(param:Any)->String{
+        
+        if case Optional<Any>.some(let val) = param{
+            return (val as! String)
+        }
+
+        return ""
+    }
 }
