@@ -68,39 +68,13 @@ class Resume{
 
                             // update core data with latest data from api
                             self.overview=CoreDataHandler.createOverview(name:name,descryption:descryption,imageProfile:imageUrl ) as! Overview?
-                            
-                            //return result to viewcontroller
-                            let isOutDated=false
-                            observer.onNext(isOutDated)
-                            observer.onCompleted()
-                        
-                        }
-                        else{
-                            
-                            // api does not return a response in a proper format
-                            
-                            // try to load an expired overview if there is any
-                            if offlineOverview.isEmpty()==false{
-                                
-                                // there is an expired overview load it with a warning ( return isOutDated true)
-                                self.overview=offlineOverview.data
-                                
-                                //return result to viewcontroller
-                                let isOutDated=true
-                                observer.onNext(isOutDated)
-                                observer.onCompleted()
-                                
-                            }
-                            else{
-                                
-                                // unable to load offline core data is empty , inform user
-                                let userError=ErrorType.generalError(message: ErrorMessage.apiFail.rawValue)
-                                observer.onError(userError)
 
-                            }
-                            
                         }
                         
+                        //return result to viewcontroller
+                        let isOutDated=false
+                        observer.onNext(isOutDated)
+                        observer.onCompleted()
                         
                     case .failure(let error):
                         
