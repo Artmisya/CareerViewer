@@ -28,6 +28,7 @@ struct OfflineOverview {
     
     func isOutDated()->Bool{
         
+
         return outDated
     }
     
@@ -150,4 +151,27 @@ class CoreDataHandler{
     }
     
     
+   // This method clear coredata, this method has been called only use in unit test
+    class func deleteOverviewFromCoreData(){
+        
+        print("deleteOverviewFromCoreData")
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        if let managedContext=appDelegate.persistentContainer.viewContext as NSManagedObjectContext?{
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Overview")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try managedContext.execute(deleteRequest)
+                try managedContext.save()
+            } catch {
+                print ("There was an error")
+            }
+        }
+    }
 }
