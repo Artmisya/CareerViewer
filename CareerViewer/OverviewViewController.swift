@@ -73,6 +73,12 @@ class OverviewViewController: BaseViewController {
         
         print ("assignDataToUi")
         
+        // just to make sure
+        if resume.overview==nil{
+            
+            return
+        }
+        
         nameLbl.text=resume.overview?.name
         descryptionTxt.text=resume.overview?.descryption
         
