@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17D47" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +20,50 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8o0-Yy-46t">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kitab Sawti" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIP-RQ-b4s">
+                                        <rect key="frame" x="8" y="270" width="359" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                        <color key="textColor" red="0.60784313729999995" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coding Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBD-Sk-lpR">
+                                        <rect key="frame" x="8" y="331" width="359" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                                        <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saeideh Sadat Javadi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sH9-at-pn9">
+                                        <rect key="frame" x="212.5" y="641" width="146.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="YIP-RQ-b4s" firstAttribute="centerY" secondItem="8o0-Yy-46t" secondAttribute="centerY" constant="-47" id="ADJ-Py-Ue6"/>
+                                    <constraint firstItem="YIP-RQ-b4s" firstAttribute="leading" secondItem="8o0-Yy-46t" secondAttribute="leading" constant="8" id="Mb5-9W-hK0"/>
+                                    <constraint firstAttribute="trailing" secondItem="YIP-RQ-b4s" secondAttribute="trailing" constant="8" id="R6M-KJ-uLx"/>
+                                    <constraint firstAttribute="trailing" secondItem="sH9-at-pn9" secondAttribute="trailing" constant="16" id="Xip-Nh-4M5"/>
+                                    <constraint firstAttribute="trailing" secondItem="sH9-at-pn9" secondAttribute="trailing" constant="16" id="ZBu-9a-o0Z"/>
+                                    <constraint firstItem="CBD-Sk-lpR" firstAttribute="leading" secondItem="8o0-Yy-46t" secondAttribute="leading" constant="8" id="cPU-TR-Otu"/>
+                                    <constraint firstItem="CBD-Sk-lpR" firstAttribute="top" secondItem="YIP-RQ-b4s" secondAttribute="bottom" constant="27" id="h4B-du-VQX"/>
+                                    <constraint firstAttribute="bottom" secondItem="sH9-at-pn9" secondAttribute="bottom" constant="8" id="haN-ZO-A5H"/>
+                                    <constraint firstAttribute="trailing" secondItem="CBD-Sk-lpR" secondAttribute="trailing" constant="8" id="mBV-oo-qAg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="8o0-Yy-46t" secondAttribute="bottom" id="Gq5-1I-C6d"/>
+                            <constraint firstItem="8o0-Yy-46t" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="JTY-KM-fF2"/>
+                            <constraint firstAttribute="trailing" secondItem="8o0-Yy-46t" secondAttribute="trailing" id="SGy-5t-Yja"/>
+                            <constraint firstItem="8o0-Yy-46t" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vEC-wZ-n4x"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
