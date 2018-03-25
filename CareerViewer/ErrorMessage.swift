@@ -11,7 +11,10 @@ import Foundation
 enum ErrorMessage: String {
     
     case noInternet="The Internet connection appears to be offline. Please check your conectivity and try again."
-    case unknownError="Whoops, something went wrong!"
+    case failToOpenEmail="The operation couldn’t be completed. Failed to open the email."
+    case failToOpenCall="The operation couldn’t be completed. Failed to initialize a call."
+    case failToOpenBrowser="The operation couldn’t be completed. Failed to open the browser."
     case failToOpenFile="The operation couldn’t be completed. The file does not exist."
+    case unknownError="Whoops, something went wrong!"
     
 }
