@@ -17,7 +17,7 @@ struct OfflineOverview {
     let outDated: Bool
     
     func isEmpty()->Bool{
-    
+        
         if data==nil{
             
             return true
@@ -28,7 +28,7 @@ struct OfflineOverview {
     
     func isOutDated()->Bool{
         
-
+        
         return outDated
     }
     
@@ -37,17 +37,39 @@ struct OfflineOverview {
 class CoreDataHandler{
     
     
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: "kitabSawtiSwift4")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
     /* this methode creates/updates an instance of Overview and save it to coredata for future offline use*/
     
-    class func createOverview(name:String,descryption:String,imageProfile:String)->NSManagedObject?{
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return nil
-        }
+    func createOverview(name:String,descryption:String,imageProfile:String)->NSManagedObject?{
         
         var overview :Overview?
-        if let managedContext=appDelegate.persistentContainer.viewContext as NSManagedObjectContext?{
+        if let managedContext=persistentContainer.viewContext as NSManagedObjectContext?{
             
             let offlineOverview = fetchOverviewFromCoreData()
             
@@ -61,7 +83,7 @@ class CoreDataHandler{
                 // overview already exsit in coredata, go for update
                 overview=offlineOverview.data
             }
-          
+            
             
             overview?.name=name
             overview?.descryption=descryption
@@ -83,7 +105,7 @@ class CoreDataHandler{
             
             let startDate=Date()
             let calendar = Calendar.current
-            let expiryTime = calendar.date(byAdding: .minute, value: appDelegate.coreDataExpirtTime, to: startDate)
+            let expiryTime = calendar.date(byAdding: .minute, value: 10, to: startDate)
             overview?.expiryTime=expiryTime as NSDate?
             
             
@@ -104,18 +126,13 @@ class CoreDataHandler{
     }
     /* this methode try to load overview from coredata if any*/
     
-    class func fetchOverviewFromCoreData()->OfflineOverview{
+    func fetchOverviewFromCoreData()->OfflineOverview{
         
         
         print("fetchOverviewFromCoreData")
         var offlineOverview=OfflineOverview(data: nil,outDated: true)
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return offlineOverview
-        }
-        
-        if let managedContext=appDelegate.persistentContainer.viewContext as NSManagedObjectContext?{
+        if let managedContext=persistentContainer.viewContext as NSManagedObjectContext?{
             
             let fetchRequest =
                 NSFetchRequest<Overview>(entityName: "Overview")
@@ -129,7 +146,7 @@ class CoreDataHandler{
                     
                     let overview=fetchRequest.first
                     // check if it is expired or not
-                    let isOutDated=(overview?.expiryTime as! Date) < Date()
+                    let isOutDated=(overview?.expiryTime as Date?)! < Date()
                     offlineOverview=OfflineOverview(data: overview, outDated: isOutDated)
                     
                     return offlineOverview
@@ -151,8 +168,8 @@ class CoreDataHandler{
     }
     
     
-   // This method clear coredata, this method has been called only use in unit test
-    class func deleteOverviewFromCoreData(){
+    // This method clear coredata, this method has been called only in unit test
+    func deleteOverviewFromCoreData(){
         
         print("deleteOverviewFromCoreData")
         
@@ -161,7 +178,7 @@ class CoreDataHandler{
                 return
         }
         
-        if let managedContext=appDelegate.persistentContainer.viewContext as NSManagedObjectContext?{
+        if let managedContext=persistentContainer.viewContext as NSManagedObjectContext?{
             
             let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Overview")
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
@@ -171,6 +188,21 @@ class CoreDataHandler{
                 try managedContext.save()
             } catch {
                 print ("There was an error")
+            }
+        }
+    }
+    
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
