@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Skill{
+class Skill: Codable{
     
     let title:String
     let rate:String

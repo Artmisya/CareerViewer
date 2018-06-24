@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Education {
+
+class Education: Codable {
     
     let degree:String
     let avg:String

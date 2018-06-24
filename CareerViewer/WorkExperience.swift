@@ -8,13 +8,13 @@
 
 import Foundation
 
-class WorkExperience{
+class WorkExperience : Codable{
     
     let role:String
     let company:String
     let duration:String
     let descryption:String
-
+    
     
     init(role:String,company:String,duration:String,descryption:String) {
         self.role=role

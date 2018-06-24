@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Contact{
+class Contact: Codable{
     
     var type:ContactType
     var value:String
