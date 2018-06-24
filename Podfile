@@ -9,7 +9,7 @@ target 'CareerViewer' do
     pod 'RxCocoa','~> 4.0'
     use_frameworks!
     
-    # Pods for kitabSawtiSwift4
+    # Pods for CareerViewer
     
     target 'CareerViewerTests' do
         inherit! :search_paths
