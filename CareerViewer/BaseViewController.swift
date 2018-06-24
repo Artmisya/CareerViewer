@@ -40,7 +40,7 @@ class BaseViewController: UIViewController {
             }
             else if (reason=="The Internet connection appears to be offline."){
                 
-                 reason = ErrorMessage.noInternet.rawValue
+                reason = ErrorMessage.noInternet.rawValue
             }
             let alert = UIAlertController(title: "Career Viewer", message: reason, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -55,7 +55,7 @@ class BaseViewController: UIViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    func printClicked(sender: UIButton) {
+    @objc func printClicked(sender: UIButton) {
         
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.general
@@ -80,4 +80,91 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func printTableViewAsPDF(tableView: UITableView)  {
+        
+        // create pdf as nsdata
+        let priorBounds = tableView.bounds
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
+        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
+        
+        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        
+        UIGraphicsEndPDFContext()
+        tableView.bounds = priorBounds
+        
+        // calling UIprinter
+        
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "Career Viewer"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printingItem=pdfData
+        // send it to printer
+        if(UIDevice.current.userInterfaceIdiom==UIUserInterfaceIdiom.pad){
+            
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            
+        }
+        else{
+            printController.present(animated: true, completionHandler: nil)
+        }
+        
+    }
+    
+    
+    
+    func printViewControllerAsPDF()  {
+        
+        let priorBounds = view.bounds
+        let fittedSize = view.sizeThatFits(CGSize(width:priorBounds.size.width, height:self.view.frame.height))
+        view.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
+        let pdfPageBounds = CGRect(x:0, y:0, width:view.frame.width, height:self.view.frame.height)
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            view.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        UIGraphicsEndPDFContext()
+        view.bounds = priorBounds
+        
+        
+        // calling UIprinter
+        
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "Career Viewer"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printingItem=pdfData
+        // send it to printer
+        if(UIDevice.current.userInterfaceIdiom==UIUserInterfaceIdiom.pad){
+            
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            
+        }
+        else{
+            printController.present(animated: true, completionHandler: nil)
+        }
+    }
 }

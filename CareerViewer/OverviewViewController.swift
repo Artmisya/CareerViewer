@@ -22,7 +22,7 @@ class OverviewViewController: BaseViewController {
     
     
     private let disposeBag = DisposeBag()
-    private let resume=AppDelegate.resume
+    private let resume=Resume()
     private let refreshControl = UIRefreshControl()
     private var isOfflineMode:Bool=false
     
@@ -35,37 +35,42 @@ class OverviewViewController: BaseViewController {
         setUpClickActions()
         
         loadOverview()
+        
+        print("after")
     }
-
+    
     private func loadOverview() {
         
         loadingView.startAnimating()
-        resume.fetchOverview().subscribe(
-            
-            onNext :{ isOfflineMode in
+        
+        
+        resume.fetchOverview()
+            .subscribe(
                 
-                //successfully get data from API
-                self.isOfflineMode=isOfflineMode
-                self.assignDataToUi()
-        },
-            onError: { error in
-                
-                //an error happend while geting data from API
-                print(error.localizedDescription)
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                self.handleError(error: error as! ErrorType)
-                
-        },
-            onCompleted: {
-                
-                print("onCompleted")
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+                onNext :{ isOfflineMode in
+                    
+                    //successfully get data from API
+                    self.isOfflineMode=isOfflineMode
+                    self.assignDataToUi()
+            },
+                onError: { error in
+                    
+                    //an error happend while geting data from API
+                    print(error.localizedDescription)
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    self.handleError(error: error as! ErrorType)
+                    
+            },
+                onCompleted: {
+                    
+                    print("onCompleted")
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            }, onDisposed: nil)
+            .disposed(by: disposeBag)
         
     }
     
@@ -117,7 +122,7 @@ class OverviewViewController: BaseViewController {
         
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull down to refresh!")
         
-        warningView.backgroundColor=UIColor(colorLiteralRed: 170/225, green: 170/255, blue: 170/255, alpha: 0.57)
+        warningView.backgroundColor=UIColor(red: 170/225, green: 170/255, blue: 170/255, alpha: 0.57)
         
         self.profileImage.layer.cornerRadius = 23.0
         self.profileImage.clipsToBounds = true
@@ -154,13 +159,13 @@ class OverviewViewController: BaseViewController {
         
     }
     
-    func didPullToRefresh() {
+    @objc func didPullToRefresh() {
         
         loadOverview()
         
     }
     
-    func closeWarningTapped(recognizer:UITapGestureRecognizer){
+    @objc   func closeWarningTapped(recognizer:UITapGestureRecognizer){
         
         UIView.transition(with: warningView, duration: 0.5, options: .transitionCurlUp, animations: {
             self.warningView.isHidden = true
@@ -168,6 +173,11 @@ class OverviewViewController: BaseViewController {
         
     }
     
-
-
+    
+    @objc override func printClicked(sender: UIButton) {
+        
+        printViewControllerAsPDF()
+    }
+    
+    
 }

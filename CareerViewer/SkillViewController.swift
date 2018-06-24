@@ -20,7 +20,7 @@ class SkillViewController: BaseViewController,UISearchBarDelegate{
     
     private var refreshControl = UIRefreshControl()
     private let ROWHEIGHT:CGFloat=169.0
-    private let resume=AppDelegate.resume
+    private let resume=Resume()
     private let disposeBag = DisposeBag()
     
     private var dataSource:Variable<[Skill]>?
@@ -46,29 +46,36 @@ class SkillViewController: BaseViewController,UISearchBarDelegate{
     private func loadSkill(){
         
         loadingView.startAnimating()
-        resume.fetchSkills().subscribe(
-            
-            onNext: {
+        
+        let cuncurrentQueue = ConcurrentDispatchQueueScheduler(queue:
+            DispatchQueue.global(qos:.utility))
+        let mainQueue = SerialDispatchQueueScheduler(queue: DispatchQueue.main, internalSerialQueueName: "main")
+        
+        resume.fetchSkills()
+            .observeOn(mainQueue)
+            .subscribeOn(cuncurrentQueue)
+            .subscribe(
                 
-                //successfully get data
-                
-                self.loadTableView()
-        },
-            onError: { error in
-                //an error happend while geting data
-                self.handleError(error: error as! ErrorType)
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-                
-        },
-            onCompleted: {
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        }, onDisposed: nil)
+                onNext: {
+                    
+                    //successfully get data
+                    
+                    self.loadTableView()
+            },
+                onError: { error in
+                    //an error happend while geting data
+                    self.handleError(error: error as! ErrorType)
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            },
+                onCompleted: {
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            }, onDisposed: nil)
             .addDisposableTo(disposeBag)
         
     }
@@ -119,7 +126,7 @@ class SkillViewController: BaseViewController,UISearchBarDelegate{
     }
     
     
-    func didPullToRefresh() {
+    @objc func didPullToRefresh() {
         
         print ("didPullToRefresh")
         searchBar.text=""
@@ -171,7 +178,7 @@ class SkillViewController: BaseViewController,UISearchBarDelegate{
                 
             })
             
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
     }
     
@@ -183,10 +190,17 @@ class SkillViewController: BaseViewController,UISearchBarDelegate{
     }
     
     // dismiss keyboard when user tab on the view
-    func viewTapped(recognizer: UITapGestureRecognizer){
+    @objc func viewTapped(recognizer: UITapGestureRecognizer){
         
         print ("viewTapped")
         self.searchBar.endEditing(true)
+        
+    }
+    
+    
+    @objc override func printClicked(sender: UIButton) {
+        
+        self.printTableViewAsPDF(tableView:self.skillTableView)
         
     }
     

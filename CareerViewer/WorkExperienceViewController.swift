@@ -18,7 +18,7 @@ class WorkExperienceViewController: BaseViewController {
     
     private var refreshControl = UIRefreshControl()
     private let ROWHEIGHT:CGFloat=169.0
-    private let resume=AppDelegate.resume
+    private let resume=Resume()
     private let disposeBag = DisposeBag()
     
     private var dataSource:Variable<[WorkExperience]>?
@@ -41,29 +41,38 @@ class WorkExperienceViewController: BaseViewController {
     private func loadWorkExperience(){
         
         loadingView.startAnimating()
-        resume.fetchWorkExperience().subscribe(
-            
-            onNext: {
+        
+        
+        let cuncurrentQueue = ConcurrentDispatchQueueScheduler(queue:
+            DispatchQueue.global(qos:.utility))
+        let mainQueue = SerialDispatchQueueScheduler(queue: DispatchQueue.main, internalSerialQueueName: "main")
+        
+        resume.fetchWorkExperience()
+            .observeOn(mainQueue)
+            .subscribeOn(cuncurrentQueue)
+            .subscribe(
                 
-                //successfully get data
-                self.loadTableView()
-        },
-            onError: { error in
-                //an error happend while geting data
-                
-                self.handleError(error: error as! ErrorType)
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-                
-        },
-            onCompleted: {
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        }, onDisposed: nil)
+                onNext: {
+                    
+                    //successfully get data
+                    self.loadTableView()
+            },
+                onError: { error in
+                    //an error happend while geting data
+                    
+                    self.handleError(error: error as! ErrorType)
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+                    
+            },
+                onCompleted: {
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            }, onDisposed: nil)
             .addDisposableTo(disposeBag)
         
     }
@@ -92,7 +101,7 @@ class WorkExperienceViewController: BaseViewController {
     private func setUpClickActions(){
         
         
-        refreshControl.addTarget(self, action: #selector(self.didPullToRefresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         workExperienceTableView.addSubview(refreshControl)
         
         // setting print button
@@ -100,8 +109,7 @@ class WorkExperienceViewController: BaseViewController {
         let btnName_print = UIButton()
         btnName_print .setImage(UIImage(named: "print"), for: .normal)
         btnName_print .frame = CGRectMake(0, 0, 30, 30)
-        btnName_print .addTarget(self, action: #selector(self.printClicked(sender:)), for: .touchUpInside)
-        
+        btnName_print .addTarget(self, action: #selector(self.printClicked), for: .touchUpInside)
         //.... Set Left Bar Button item
         let rightBarButton_print  = UIBarButtonItem()
         rightBarButton_print .customView = btnName_print
@@ -109,7 +117,7 @@ class WorkExperienceViewController: BaseViewController {
         
     }
     
-    func didPullToRefresh() {
+    @objc func didPullToRefresh() {
         
         print ("didPullToRefresh")
         loadWorkExperience()
@@ -139,9 +147,13 @@ class WorkExperienceViewController: BaseViewController {
                 workExperinceCell.selectionStyle = .none
             }
             
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
         
     }
     
-    
+    @objc override func printClicked(sender: UIButton) {
+        
+        self.printTableViewAsPDF(tableView:self.workExperienceTableView)
+        
+    }
 }

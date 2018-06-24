@@ -20,7 +20,7 @@ class EducationViewController: BaseViewController {
     
     private var refreshControl = UIRefreshControl()
     private let ROWHEIGHT:CGFloat=169.0
-    private let resume=AppDelegate.resume
+    private let resume=Resume()
     private let disposeBag = DisposeBag()
     private var dataSource:Variable<[Education]>?
     
@@ -38,35 +38,72 @@ class EducationViewController: BaseViewController {
         
         loadEducation()
         
+        print("going to load loadEducation")
+        
     }
     
     private func loadEducation(){
         
         loadingView.startAnimating()
-        resume.fetchEducation().subscribe(
-            
-            onNext: {
-                
-                //successfully get data
-                self.loadTableView()
-        },
-            onError: { error in
-                
-                //an error happend while geting data
-                self.handleError(error: error as! ErrorType)
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        },
-            onCompleted: {
-                
-                print("onCompleted")
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+        
+        let cuncurrentQueue = ConcurrentDispatchQueueScheduler(queue:
+            DispatchQueue.global(qos:.utility))
+        
+        let mainQueue = SerialDispatchQueueScheduler(queue: DispatchQueue.main, internalSerialQueueName: "main")
+        
+        resume.fetchEducation()
+            .observeOn(mainQueue)
+            .subscribeOn(cuncurrentQueue)
+            .subscribe(
+                onNext: {
+                    
+                    //successfully get data
+                    self.loadTableView()
+            },
+                onError: { error in
+                    
+                    //an error happend while geting data
+                    self.handleError(error: error as! ErrorType)
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            },
+                onCompleted: {
+                    
+                    print("onCompleted")
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            }, onDisposed: nil)
+            .disposed(by: disposeBag)
+        
+        
+        
+        //        resume.fetchEducation().subscribe(
+        //
+        //            onNext: {
+        //
+        //                //successfully get data
+        //                self.loadTableView()
+        //        },
+        //            onError: { error in
+        //
+        //                //an error happend while geting data
+        //                self.handleError(error: error as! ErrorType)
+        //
+        //                self.loadingView.stopAnimating()
+        //                self.refreshControl.endRefreshing()
+        //
+        //        },
+        //            onCompleted: {
+        //
+        //                print("onCompleted")
+        //                self.loadingView.stopAnimating()
+        //                self.refreshControl.endRefreshing()
+        //
+        //        }, onDisposed: nil)
+        //            .addDisposableTo(disposeBag)
         
         
     }
@@ -113,7 +150,7 @@ class EducationViewController: BaseViewController {
         
     }
     
-    func didPullToRefresh() {
+    @objc func didPullToRefresh() {
         
         print ("didPullToRefresh")
         loadEducation()
@@ -143,8 +180,13 @@ class EducationViewController: BaseViewController {
                 cell.selectionStyle = .none
             }
             
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
         
     }
-
+    
+    @objc override func printClicked(sender: UIButton) {
+        
+        self.printTableViewAsPDF(tableView:self.educationTableView)
+        
+    }
 }

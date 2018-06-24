@@ -8,6 +8,8 @@
 
 import UIKit
 
+import UIKit
+
 import RxSwift
 import RxCocoa
 class ContactViewController:BaseViewController,UISearchBarDelegate{
@@ -20,7 +22,7 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
     
     private var refreshControl = UIRefreshControl()
     private let ROWHEIGHT:CGFloat=169.0
-    private let resume=AppDelegate.resume
+    private let resume=Resume()
     private let disposeBag = DisposeBag()
     
     private var dataSource:Variable<[Contact]>?
@@ -41,30 +43,38 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
     private func loadContact(){
         
         loadingView.startAnimating()
-        resume.fetchContacts().subscribe(
-            
-            onNext: {
+        
+        let cuncurrentQueue = ConcurrentDispatchQueueScheduler(queue:
+            DispatchQueue.global(qos:.utility))
+        let mainQueue = SerialDispatchQueueScheduler(queue: DispatchQueue.main, internalSerialQueueName: "main")
+        
+        resume.fetchContacts()
+            .observeOn(mainQueue)
+            .subscribeOn(cuncurrentQueue)
+            .subscribe(
                 
-                //successfully get data
-                
-                self.loadTableView()
-        },
-            onError: { error in
-                //an error happend while geting data
-                self.handleError(error: error as! ErrorType)
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-                
-        },
-            onCompleted: {
-                
-                self.loadingView.stopAnimating()
-                self.refreshControl.endRefreshing()
-                
-        }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+                onNext: {
+                    
+                    //successfully get data
+                    
+                    self.loadTableView()
+            },
+                onError: { error in
+                    //an error happend while geting data
+                    self.handleError(error: error as! ErrorType)
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+                    
+            },
+                onCompleted: {
+                    
+                    self.loadingView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                    
+            }, onDisposed: nil)
+            .disposed(by: disposeBag)
         
     }
     
@@ -109,7 +119,7 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
     }
     
     
-    func didPullToRefresh() {
+    @objc func didPullToRefresh() {
         
         print ("didPullToRefresh")
         loadContact()
@@ -147,12 +157,12 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
                 contactCell.selectionStyle = .none
             }
             
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
         
     }
     
     // this method give user a way to contact based on which contact type is clicked
-    func contactTapped(recognizer:tapGestureRecognizerwithParam){
+    @objc func contactTapped(recognizer:tapGestureRecognizerwithParam){
         
         let contact=recognizer.param as! Contact
         
@@ -264,6 +274,12 @@ class ContactViewController:BaseViewController,UISearchBarDelegate{
             let userError=ErrorType.generalError(message: ErrorMessage.failToOpenBrowser.rawValue)
             self.handleError(error: userError )
         }
+        
+    }
+    
+    @objc override func printClicked(sender: UIButton) {
+        
+        self.printTableViewAsPDF(tableView:self.contactTableView)
         
     }
     
