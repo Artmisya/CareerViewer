@@ -17,18 +17,9 @@
 		F9551DF02067AC28001618AC /* skill.json in Resources */ = {isa = PBXBuildFile; fileRef = F9551DEB2067AC28001618AC /* skill.json */; };
 		F9551DF12067AC28001618AC /* education.json in Resources */ = {isa = PBXBuildFile; fileRef = F9551DEC2067AC28001618AC /* education.json */; };
 		F9551DF32067AF08001618AC /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551DF22067AF08001618AC /* EducationViewController.swift */; };
-		F9551DF72067AFC6001618AC /* EducationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551DF52067AFC6001618AC /* EducationCell.swift */; };
-		F9551DF82067AFC6001618AC /* EducationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9551DF62067AFC6001618AC /* EducationCell.xib */; };
 		F9551DFA2067B2CA001618AC /* WorkExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551DF92067B2CA001618AC /* WorkExperienceViewController.swift */; };
-		F9551E002067B309001618AC /* WorkExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551DFE2067B309001618AC /* WorkExperienceCell.swift */; };
-		F9551E012067B309001618AC /* WorkExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9551DFF2067B309001618AC /* WorkExperienceCell.xib */; };
-		F9551E052067B852001618AC /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551E032067B852001618AC /* SkillCell.swift */; };
-		F9551E062067B852001618AC /* SkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9551E042067B852001618AC /* SkillCell.xib */; };
 		F9551E082067B8AB001618AC /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551E072067B8AB001618AC /* SkillViewController.swift */; };
-		F9551E0C2067BA33001618AC /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551E0A2067BA33001618AC /* ContactCell.swift */; };
-		F9551E0D2067BA33001618AC /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9551E0B2067BA33001618AC /* ContactCell.xib */; };
 		F9551E0F2067BAEE001618AC /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551E0E2067BAEE001618AC /* ContactViewController.swift */; };
-		F9551E132067BB70001618AC /* tapGestureRecognizerwithParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9551E122067BB70001618AC /* tapGestureRecognizerwithParam.swift */; };
 		F979258620676B28008CEDB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979258520676B28008CEDB9 /* AppDelegate.swift */; };
 		F979258B20676B28008CEDB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F979258920676B28008CEDB9 /* Main.storyboard */; };
 		F979258E20676B28008CEDB9 /* CareerViewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F979258C20676B28008CEDB9 /* CareerViewer.xcdatamodeld */; };
@@ -43,6 +34,16 @@
 		F97925B920677798008CEDB9 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925B820677798008CEDB9 /* Skill.swift */; };
 		F97925BB206777AB008CEDB9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925BA206777AB008CEDB9 /* Contact.swift */; };
 		F97925BE20677836008CEDB9 /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97925BD20677836008CEDB9 /* ContactType.swift */; };
+		F9DA07A520DFC54F00C0104C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07A420DFC54F00C0104C /* Result.swift */; };
+		F9DA07A720DFC62400C0104C /* tapGestureRecognizerwithParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07A620DFC62400C0104C /* tapGestureRecognizerwithParam.swift */; };
+		F9DA07AA20DFC6B600C0104C /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07A820DFC6B600C0104C /* ContactCell.swift */; };
+		F9DA07AB20DFC6B600C0104C /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DA07A920DFC6B600C0104C /* ContactCell.xib */; };
+		F9DA07AE20DFC6C500C0104C /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07AC20DFC6C500C0104C /* SkillCell.swift */; };
+		F9DA07AF20DFC6C500C0104C /* SkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DA07AD20DFC6C500C0104C /* SkillCell.xib */; };
+		F9DA07B220DFC6CD00C0104C /* WorkExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07B020DFC6CD00C0104C /* WorkExperienceCell.swift */; };
+		F9DA07B320DFC6CD00C0104C /* WorkExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DA07B120DFC6CD00C0104C /* WorkExperienceCell.xib */; };
+		F9DA07B620DFC6D600C0104C /* EducationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DA07B420DFC6D600C0104C /* EducationCell.xib */; };
+		F9DA07B720DFC6D600C0104C /* EducationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DA07B520DFC6D600C0104C /* EducationCell.swift */; };
 		F9E8E80F20677B0A005B4FAE /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8E80E20677B0A005B4FAE /* CoreDataHandler.swift */; };
 		F9E8E81320678C93005B4FAE /* ApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8E81220678C93005B4FAE /* ApiUrl.swift */; };
 		F9E8E81520678CD8005B4FAE /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8E81420678CD8005B4FAE /* ErrorType.swift */; };
@@ -76,18 +77,9 @@
 		F9551DEB2067AC28001618AC /* skill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = skill.json; path = files/skill.json; sourceTree = SOURCE_ROOT; };
 		F9551DEC2067AC28001618AC /* education.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = education.json; path = files/education.json; sourceTree = SOURCE_ROOT; };
 		F9551DF22067AF08001618AC /* EducationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
-		F9551DF52067AFC6001618AC /* EducationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationCell.swift; sourceTree = "<group>"; };
-		F9551DF62067AFC6001618AC /* EducationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationCell.xib; sourceTree = "<group>"; };
 		F9551DF92067B2CA001618AC /* WorkExperienceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkExperienceViewController.swift; sourceTree = "<group>"; };
-		F9551DFE2067B309001618AC /* WorkExperienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkExperienceCell.swift; sourceTree = "<group>"; };
-		F9551DFF2067B309001618AC /* WorkExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkExperienceCell.xib; sourceTree = "<group>"; };
-		F9551E032067B852001618AC /* SkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
-		F9551E042067B852001618AC /* SkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillCell.xib; sourceTree = "<group>"; };
 		F9551E072067B8AB001618AC /* SkillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
-		F9551E0A2067BA33001618AC /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
-		F9551E0B2067BA33001618AC /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		F9551E0E2067BAEE001618AC /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
-		F9551E122067BB70001618AC /* tapGestureRecognizerwithParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tapGestureRecognizerwithParam.swift; sourceTree = "<group>"; };
 		F979258220676B28008CEDB9 /* CareerViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F979258520676B28008CEDB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F979258A20676B28008CEDB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +98,16 @@
 		F97925B820677798008CEDB9 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		F97925BA206777AB008CEDB9 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		F97925BD20677836008CEDB9 /* ContactType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
+		F9DA07A420DFC54F00C0104C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		F9DA07A620DFC62400C0104C /* tapGestureRecognizerwithParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapGestureRecognizerwithParam.swift; sourceTree = "<group>"; };
+		F9DA07A820DFC6B600C0104C /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		F9DA07A920DFC6B600C0104C /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
+		F9DA07AC20DFC6C500C0104C /* SkillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		F9DA07AD20DFC6C500C0104C /* SkillCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillCell.xib; sourceTree = "<group>"; };
+		F9DA07B020DFC6CD00C0104C /* WorkExperienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkExperienceCell.swift; sourceTree = "<group>"; };
+		F9DA07B120DFC6CD00C0104C /* WorkExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkExperienceCell.xib; sourceTree = "<group>"; };
+		F9DA07B420DFC6D600C0104C /* EducationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationCell.xib; sourceTree = "<group>"; };
+		F9DA07B520DFC6D600C0104C /* EducationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationCell.swift; sourceTree = "<group>"; };
 		F9E8E80E20677B0A005B4FAE /* CoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		F9E8E81220678C93005B4FAE /* ApiUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrl.swift; sourceTree = "<group>"; };
 		F9E8E81420678CD8005B4FAE /* ErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
@@ -154,14 +156,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F951A3A32067C96100181788 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				F951A3A42067C97100181788 /* UiViewToImage.swift */,
-			);
-			name = Extension;
-			sourceTree = "<group>";
-		};
 		F9551DE32067AB99001618AC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,8 +187,8 @@
 		F9551DF42067AF8E001618AC /* EducationCell */ = {
 			isa = PBXGroup;
 			children = (
-				F9551DF52067AFC6001618AC /* EducationCell.swift */,
-				F9551DF62067AFC6001618AC /* EducationCell.xib */,
+				F9DA07B520DFC6D600C0104C /* EducationCell.swift */,
+				F9DA07B420DFC6D600C0104C /* EducationCell.xib */,
 			);
 			name = EducationCell;
 			sourceTree = "<group>";
@@ -202,8 +196,8 @@
 		F9551DFB2067B2E6001618AC /* WorkExperienceCell */ = {
 			isa = PBXGroup;
 			children = (
-				F9551DFE2067B309001618AC /* WorkExperienceCell.swift */,
-				F9551DFF2067B309001618AC /* WorkExperienceCell.xib */,
+				F9DA07B020DFC6CD00C0104C /* WorkExperienceCell.swift */,
+				F9DA07B120DFC6CD00C0104C /* WorkExperienceCell.xib */,
 			);
 			name = WorkExperienceCell;
 			sourceTree = "<group>";
@@ -211,8 +205,8 @@
 		F9551E022067B840001618AC /* SkillCell */ = {
 			isa = PBXGroup;
 			children = (
-				F9551E032067B852001618AC /* SkillCell.swift */,
-				F9551E042067B852001618AC /* SkillCell.xib */,
+				F9DA07AC20DFC6C500C0104C /* SkillCell.swift */,
+				F9DA07AD20DFC6C500C0104C /* SkillCell.xib */,
 			);
 			name = SkillCell;
 			sourceTree = "<group>";
@@ -220,8 +214,8 @@
 		F9551E092067BA1F001618AC /* ContactCell */ = {
 			isa = PBXGroup;
 			children = (
-				F9551E0A2067BA33001618AC /* ContactCell.swift */,
-				F9551E0B2067BA33001618AC /* ContactCell.xib */,
+				F9DA07A820DFC6B600C0104C /* ContactCell.swift */,
+				F9DA07A920DFC6B600C0104C /* ContactCell.xib */,
 			);
 			name = ContactCell;
 			sourceTree = "<group>";
@@ -229,17 +223,10 @@
 		F9551E102067BB53001618AC /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
-				F9551E112067BB5B001618AC /* TapGesture */,
+				F951A3A42067C97100181788 /* UiViewToImage.swift */,
+				F9DA07A620DFC62400C0104C /* tapGestureRecognizerwithParam.swift */,
 			);
 			name = HelperClasses;
-			sourceTree = "<group>";
-		};
-		F9551E112067BB5B001618AC /* TapGesture */ = {
-			isa = PBXGroup;
-			children = (
-				F9551E122067BB70001618AC /* tapGestureRecognizerwithParam.swift */,
-			);
-			name = TapGesture;
 			sourceTree = "<group>";
 		};
 		F979257920676B28008CEDB9 = {
@@ -312,7 +299,6 @@
 		F97925AA20676BD4008CEDB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F951A3A32067C96100181788 /* Extension */,
 				F9551E102067BB53001618AC /* HelperClasses */,
 				F9E8E81620679819005B4FAE /* OverviewViewController.swift */,
 				F9E8E81A206798DF005B4FAE /* BaseViewController.swift */,
@@ -353,6 +339,7 @@
 				F9E8E81220678C93005B4FAE /* ApiUrl.swift */,
 				F9E8E81420678CD8005B4FAE /* ErrorType.swift */,
 				F9E8E81C20679915005B4FAE /* ErrorMessage.swift */,
+				F9DA07A420DFC54F00C0104C /* Result.swift */,
 			);
 			name = Enum;
 			sourceTree = "<group>";
@@ -457,17 +444,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9551E0D2067BA33001618AC /* ContactCell.xib in Resources */,
+				F9DA07B320DFC6CD00C0104C /* WorkExperienceCell.xib in Resources */,
 				F9551DEF2067AC28001618AC /* contact.json in Resources */,
-				F9551DF82067AFC6001618AC /* EducationCell.xib in Resources */,
 				F979259320676B28008CEDB9 /* LaunchScreen.storyboard in Resources */,
-				F9551E062067B852001618AC /* SkillCell.xib in Resources */,
 				F9551DF12067AC28001618AC /* education.json in Resources */,
+				F9DA07AF20DFC6C500C0104C /* SkillCell.xib in Resources */,
+				F9DA07AB20DFC6B600C0104C /* ContactCell.xib in Resources */,
 				F979259020676B28008CEDB9 /* Assets.xcassets in Resources */,
 				F9551DED2067AC28001618AC /* workExperience.json in Resources */,
 				F979258B20676B28008CEDB9 /* Main.storyboard in Resources */,
 				F9551DF02067AC28001618AC /* skill.json in Resources */,
-				F9551E012067B309001618AC /* WorkExperienceCell.xib in Resources */,
+				F9DA07B620DFC6D600C0104C /* EducationCell.xib in Resources */,
 				F9551DEE2067AC28001618AC /* wrongFormatFile.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,25 +586,26 @@
 				F9E8E81320678C93005B4FAE /* ApiUrl.swift in Sources */,
 				F9551DFA2067B2CA001618AC /* WorkExperienceViewController.swift in Sources */,
 				F97925BB206777AB008CEDB9 /* Contact.swift in Sources */,
-				F9551E002067B309001618AC /* WorkExperienceCell.swift in Sources */,
+				F9DA07AE20DFC6C500C0104C /* SkillCell.swift in Sources */,
 				F979258620676B28008CEDB9 /* AppDelegate.swift in Sources */,
 				F9551E082067B8AB001618AC /* SkillViewController.swift in Sources */,
 				F97925B920677798008CEDB9 /* Skill.swift in Sources */,
 				F97925B020677569008CEDB9 /* Overview+CoreDataProperties.swift in Sources */,
 				F9551DE62067ABB2001618AC /* JsonHandler.swift in Sources */,
 				F9E8E81520678CD8005B4FAE /* ErrorType.swift in Sources */,
+				F9DA07B220DFC6CD00C0104C /* WorkExperienceCell.swift in Sources */,
 				F9551E0F2067BAEE001618AC /* ContactViewController.swift in Sources */,
+				F9DA07A720DFC62400C0104C /* tapGestureRecognizerwithParam.swift in Sources */,
+				F9DA07AA20DFC6B600C0104C /* ContactCell.swift in Sources */,
 				F951A3A52067C97100181788 /* UiViewToImage.swift in Sources */,
-				F9551E0C2067BA33001618AC /* ContactCell.swift in Sources */,
 				F97925AF20677569008CEDB9 /* Overview+CoreDataClass.swift in Sources */,
+				F9DA07A520DFC54F00C0104C /* Result.swift in Sources */,
 				F97925BE20677836008CEDB9 /* ContactType.swift in Sources */,
+				F9DA07B720DFC6D600C0104C /* EducationCell.swift in Sources */,
 				F979258E20676B28008CEDB9 /* CareerViewer.xcdatamodeld in Sources */,
 				F9551DF32067AF08001618AC /* EducationViewController.swift in Sources */,
 				F9E8E81B206798DF005B4FAE /* BaseViewController.swift in Sources */,
-				F9551E052067B852001618AC /* SkillCell.swift in Sources */,
 				F97925B72067777D008CEDB9 /* Education.swift in Sources */,
-				F9551DF72067AFC6001618AC /* EducationCell.swift in Sources */,
-				F9551E132067BB70001618AC /* tapGestureRecognizerwithParam.swift in Sources */,
 				F97925B520677771008CEDB9 /* WorkExperience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,7 +749,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiseno.com.CareerViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -776,7 +764,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tiseno.com.CareerViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
