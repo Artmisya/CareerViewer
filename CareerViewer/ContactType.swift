@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ContactType: String {
+enum ContactType: String,Codable {
     case email
     case mobile
     case website
