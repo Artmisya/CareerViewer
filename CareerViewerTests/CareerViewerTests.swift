@@ -13,20 +13,27 @@ import RxSwift
 
 class CareerViewerTests: XCTestCase {
     
-     var resumeUnderTest: Resume!
+    var resumeUnderTest: Resume!
+    var coreDataHandlerUnderTest:CoreDataHandler!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         resumeUnderTest=Resume()
+        coreDataHandlerUnderTest=CoreDataHandler()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         resumeUnderTest = nil
+        coreDataHandlerUnderTest=nil
         super.tearDown()
     }
     
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
@@ -34,10 +41,11 @@ class CareerViewerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
     func  testCreateOverview(){
         
-        let managedObject=CoreDataHandler.createOverview(name: "Artmis", descryption: "testing create core data", imageProfile: "https://media.glassdoor.com/userprofileuser/upul/2364548/2364548-userprofileuser-1508486141841.jpg")
+        
+        let managedObject=coreDataHandlerUnderTest.createOverview(name: "Artmis", descryption: "testing create core data", imageProfile: "https://media.glassdoor.com/userprofileuser/upul/2364548/2364548-userprofileuser-1508486141841.jpg")
         
         let startDate=Date()
         let calendar = Calendar.current
@@ -54,19 +62,19 @@ class CareerViewerTests: XCTestCase {
         XCTAssertNotNil(overviewObj?.expiryTime, "expiryTime is null")
         
         // make sure expiry time time is within 10 mins
-        XCTAssertTrue((overviewObj?.expiryTime as! Date) > Date())
-        XCTAssertTrue((overviewObj?.expiryTime as! Date) < fromNow11Mins!)
+        XCTAssertTrue((overviewObj?.expiryTime! as! Date) > Date())
+        XCTAssertTrue((overviewObj?.expiryTime! as! Date) < fromNow11Mins!)
         
-   
+        
         
     }
     
     func testFetchOverviewFromCoreData(){
         
-        _=CoreDataHandler.createOverview(name: "Artmis", descryption: "testing fetching core data", imageProfile: "https://media.glassdoor.com/userprofileuser/upul/2364548/2364548-userprofileuser-1508486141841.jpg")
+        _=coreDataHandlerUnderTest.createOverview(name: "Artmis", descryption: "testing fetching core data", imageProfile: "https://media.glassdoor.com/userprofileuser/upul/2364548/2364548-userprofileuser-1508486141841.jpg")
         
         
-        let offlineObj=CoreDataHandler.fetchOverviewFromCoreData()
+        let offlineObj=coreDataHandlerUnderTest.fetchOverviewFromCoreData()
         
         XCTAssertNotNil(offlineObj, "fetchOverviewFromCoreData returns nil")
         
@@ -77,16 +85,16 @@ class CareerViewerTests: XCTestCase {
         XCTAssertEqual(offlineOverview?.descryption, "testing fetching core data")
         XCTAssertNotNil(offlineOverview?.image, "fetchOverviewFromCoreData cannot fetch the image")
         XCTAssertNotNil(offlineOverview?.expiryTime, "fetchOverviewFromCoreData cannot fetch the expiry time")
-
+        
     }
     
     /******Note to test: this test is for when coredata is EMPTY and  online mode get success
      TURN ON your internet connection to do this test*****/
     func testFetchOverviewOnline(){
-
+        
         // first delete core data make it empty
         
-        CoreDataHandler.deleteOverviewFromCoreData()
+        coreDataHandlerUnderTest.deleteOverviewFromCoreData()
         
         // now go for  test
         let disposeBag = DisposeBag()
@@ -119,7 +127,7 @@ class CareerViewerTests: XCTestCase {
                 e.fulfill()
                 
         }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         
         waitForExpectations(timeout: 15.0, handler: nil)
@@ -133,7 +141,7 @@ class CareerViewerTests: XCTestCase {
         
         // first delete core data make it empty
         
-        CoreDataHandler.deleteOverviewFromCoreData()
+        coreDataHandlerUnderTest.deleteOverviewFromCoreData()
         
         let disposeBag = DisposeBag()
         
@@ -160,7 +168,7 @@ class CareerViewerTests: XCTestCase {
                 e.fulfill()
                 
         }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         
         waitForExpectations(timeout: 3000.0, handler: nil)
@@ -197,7 +205,7 @@ class CareerViewerTests: XCTestCase {
                 e.fulfill()
                 
         }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         
         waitForExpectations(timeout: 3000.0, handler: nil)
@@ -234,7 +242,7 @@ class CareerViewerTests: XCTestCase {
                 e.fulfill()
                 
         }, onDisposed: nil)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         
         waitForExpectations(timeout: 3000.0, handler: nil)
@@ -245,21 +253,37 @@ class CareerViewerTests: XCTestCase {
         
         // test with a correct file
         let result=JsonHandler.readJsonFile(fileName: "education")
-        XCTAssertNil(result.error, result.error!.localizedDescription)
-        XCTAssertNotNil(result.data, "Whoops, readJsonFile returns a nil value for data")
+        
+        XCTAssert(try result.assertIsSuccess())
+        
         
         // test with a file that does not exist
         let resultFileNotExsit=JsonHandler.readJsonFile(fileName: "thisfiledoesnotexsit")
-        XCTAssertNotNil(resultFileNotExsit.error, "Whoops, readJsonFile does NOT return any error while reading a file that does not exsit!")
-        XCTAssertNil(resultFileNotExsit.data, "Whoops, readJsonFile returns a NOT null data for a file that does not exsit!")
+        XCTAssert(try resultFileNotExsit.assertIsFailure())
         
-        //test with a file  witch have a wrong json format
-        
-        let resultWrongFormat=JsonHandler.readJsonFile(fileName: "wrongFormatFile")
-        XCTAssertNotNil(resultWrongFormat.error, "Whoops,  readJsonFile does NOT return any error while reading a file with a wrong json format!")
-        XCTAssertNil(resultWrongFormat.data, "Whoops,  readJsonFile returns a NOT null data for a file with a wrong json format!")
         
     }
     
+}
+
+
+// MARK: Helpers
+private extension Result {
     
+    func assertIsSuccess() throws -> Bool {
+        switch self {
+        case .success(_):
+            return true
+        case .failure(_):
+            throw ErrorType.generalError(message: "Expected .success, got .\(self)")
+        }
+    }
+    func assertIsFailure() throws -> Bool {
+        switch self {
+        case .success(_):
+            throw ErrorType.generalError(message: "Expected .failure, got .\(self)")
+        case .failure(_):
+            return true
+        }
+    }
 }
